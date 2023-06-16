@@ -17,7 +17,7 @@ class FunctionalTestCase(TestCase):
 
         time.sleep(5)  # Let the user actually see something!
 
-        assert self.browser.page_source.find("install")
+        self.assertIn('install', self.browser.page_source)
 
         time.sleep(5)  # Let the user actually see something!
 
