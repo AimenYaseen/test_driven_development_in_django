@@ -12,7 +12,9 @@ class FunctionalTestCase(TestCase):
         self.browser = webdriver.Chrome()
 
     def test_this_is_homepage(self):
-        self.browser = webdriver.Chrome()
+        """
+        This test will check if the homepage contains keyword 'install'
+        """
         self.browser.get('http://localhost:8000')
 
         time.sleep(5)  # Let the user actually see something!
