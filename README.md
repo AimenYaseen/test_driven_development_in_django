@@ -1,7 +1,7 @@
-# test_driven_development_in_django
+# Test Driven Development in Django
 This project will contain functional tests and unit tests. Its main focus will be unit tests. I will practice 'how to write unit tests and then write functions to pass that tests'.
 
-Steps to follow:
+## Steps to follow:
 - clone the repository
 - create a virtual environment
 - install requirements using command 'pip install -r requirements.txt'
@@ -11,3 +11,5 @@ Steps to follow:
 - chromedriver - https://chromedriver.chromium.org/downloads
 - use the latest or the one that matches your browser versions.
 - extract and then move the executable file to your projects virtual environments bin directory.
+- move to the project folder
+- run this command 'python functional_tests/find_install_keyword_test.py' to run functional test.
