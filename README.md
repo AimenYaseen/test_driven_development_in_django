@@ -12,4 +12,5 @@ This project will contain functional tests and unit tests. Its main focus will b
 - use the latest or the one that matches your browser versions.
 - extract and then move the executable file to your projects virtual environments bin directory.
 - move to the project folder
-- run this command 'python functional_tests/find_install_keyword_test.py' to run functional test.
+- run server 'python manage.py runserver:8000'
+- run this command 'python manage.py test' to run all the tests in this project.
