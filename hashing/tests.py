@@ -1,6 +1,12 @@
 import time
 
+from django.test import TestCase
 from selenium import webdriver
+
+
+class FunctionalTestCase(TestCase):
+    pass
+
 
 browser = webdriver.Chrome()
 browser.get('http://localhost:8000')
