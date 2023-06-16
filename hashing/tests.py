@@ -11,20 +11,18 @@ class FunctionalTestCase(TestCase):
         """
         self.browser = webdriver.Chrome()
 
+    def test_this_is_homepage(self):
+        self.browser = webdriver.Chrome()
+        self.browser.get('http://localhost:8000')
+
+        time.sleep(5)  # Let the user actually see something!
+
+        assert self.browser.page_source.find("install")
+
+        time.sleep(5)  # Let the user actually see something!
+
     def tearDown(self) -> None:
         """
         call after test finish
         """
         self.browser.quit()
-
-
-browser = webdriver.Chrome()
-browser.get('http://localhost:8000')
-
-time.sleep(5)  # Let the user actually see something!
-
-assert browser.page_source.find("install")
-
-time.sleep(5)  # Let the user actually see something!
-
-browser.quit()
