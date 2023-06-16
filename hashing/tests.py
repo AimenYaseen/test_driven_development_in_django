@@ -5,7 +5,17 @@ from selenium import webdriver
 
 
 class FunctionalTestCase(TestCase):
-    pass
+    def setUp(self) -> None:
+        """
+        call before test starts
+        """
+        self.browser = webdriver.Chrome()
+
+    def tearDown(self) -> None:
+        """
+        call after test finish
+        """
+        self.browser.quit()
 
 
 browser = webdriver.Chrome()
