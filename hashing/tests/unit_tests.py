@@ -7,4 +7,5 @@ class UnitTestCase(TestCase):
         """
         checks whether the home template exists
         """
-
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'hashing/home.html')
