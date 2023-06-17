@@ -5,6 +5,9 @@ from selenium import webdriver
 
 
 class FunctionalTestCase(TestCase):
+    """
+    FunctionalTest describes what a user can do
+    """
     def setUp(self) -> None:
         """
         call before test starts
