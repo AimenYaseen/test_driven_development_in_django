@@ -11,6 +11,7 @@ This project will contain functional tests and unit tests. Its main focus will b
 - chromedriver - https://chromedriver.chromium.org/downloads
 - use the latest or the one that matches your browser versions.
 - extract and then move the executable file to your projects virtual environments bin directory.
+- follow this tutorial to set up in ubuntu 'https://tecadmin.net/setup-selenium-chromedriver-on-ubuntu/'
 - move to the project folder
 - run server 'python manage.py runserver:8000'
 - run this command 'python manage.py test' to run all the tests in this project.
