@@ -6,7 +6,7 @@ from selenium import webdriver
 
 class FunctionalTestCase(TestCase):
     """
-    FunctionalTest describes what a user can do
+    FunctionalTest describes what a user can or wants to do
     """
     def setUp(self) -> None:
         """
@@ -16,13 +16,13 @@ class FunctionalTestCase(TestCase):
 
     def test_this_is_homepage(self):
         """
-        This test will check if the homepage contains keyword 'install'
+        This test will check that the homepage allow user to enter some hash
         """
         self.browser.get('http://localhost:8000')
 
         time.sleep(5)  # Let the user actually see something!
 
-        self.assertIn('install', self.browser.page_source)
+        self.assertIn('Enter hash here:', self.browser.page_source)
 
         time.sleep(5)  # Let the user actually see something!
 
