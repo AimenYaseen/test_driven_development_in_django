@@ -1,5 +1,3 @@
-import time
-
 from django.test import TestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
