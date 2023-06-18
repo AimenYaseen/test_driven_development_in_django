@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from .forms import HashForm
 
 
 def home(request):
     """
     renders home template
     """
-    return render(request, 'hashing/home.html')
+    form = HashForm()
+    return render(request, 'hashing/home.html', context={'form': form})
