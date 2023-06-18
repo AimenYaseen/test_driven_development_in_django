@@ -1,5 +1,7 @@
 from django.test import TestCase
 
+from hashing.forms import HashForm
+
 
 class UnitTestCase(TestCase):
 
