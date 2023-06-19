@@ -35,7 +35,7 @@ class FunctionalTestCase(TestCase):
         # find an element by its name
         self.browser.find_element(By.NAME, 'submit').click()
         # assert if the hello's hash appear on homepage
-        self.assertIn('2CF24DBA5FB0A30E26E83B2AC5B9E29E1B161E5C1FA7425E73043362938B9824', self.browser.page_source)
+        self.assertIn('2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', self.browser.page_source)
 
     def tearDown(self) -> None:
         """
