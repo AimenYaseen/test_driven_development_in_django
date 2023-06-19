@@ -34,14 +34,21 @@ class UnitTestCase(TestCase):
         hash_text = hashlib.sha256('hello'.encode('utf-8')).hexdigest()
         self.assertEqual('2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', hash_text)
 
-    def test_hash_object(self):
+    def save_hash(self) -> Hash:
         """
-        test that the hash model works or not
+        save the text 'hello' and its hash in db and return it
         """
         _hash = Hash()
         _hash.text = 'hello'
         _hash.hash = '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
         _hash.save()
+        return _hash
+
+    def test_hash_object(self):
+        """
+        test that the hash model works or not
+        """
+        _hash = self.save_hash()
 
         # match class hash and database hash
         pulled_hash = Hash.objects.get(hash='2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824')
