@@ -1,6 +1,6 @@
 import hashlib
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import HashForm
 from .models import Hash
@@ -8,8 +8,8 @@ from .models import Hash
 
 def home(request):
     """
-    handles post request to generate Hash object
-    renders home template with HashForm
+    - handles post request to generate Hash object
+    - renders home template with HashForm
     """
     if request.method == 'POST':
         filled_form = HashForm(request.POST)
@@ -23,3 +23,12 @@ def home(request):
 
     form = HashForm()
     return render(request, 'hashing/home.html', context={'form': form})
+
+
+def hashing(request, hash_text):
+    """
+    - get hash object using hash_text
+    - renders hash template and pass the hash object
+    """
+    _hash = Hash.objects.get(hash=hash_text)
+    return render(request, 'hashing/hash.html', context={'hash': _hash})
