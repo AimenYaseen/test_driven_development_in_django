@@ -20,6 +20,7 @@ def home(request):
                 Hash.objects.get(hash=hash_text)
             except Hash.DoesNotExist:
                 Hash.objects.create(text=text, hash=hash_text)
+            return redirect('hash', hash_text=hash_text)
 
     form = HashForm()
     return render(request, 'hashing/home.html', context={'form': form})
