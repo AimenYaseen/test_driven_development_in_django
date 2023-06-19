@@ -53,3 +53,13 @@ class UnitTestCase(TestCase):
         # match class hash and database hash
         pulled_hash = Hash.objects.get(hash='2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824')
         self.assertEqual(_hash.hash, pulled_hash.hash)
+
+    def test_hash_view(self):
+        """
+        tes if the hash view returns the right string for the given hash
+        """
+        _hash = self.save_hash()
+
+        # call hash view
+        response = self.client.get('/hash/2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824')
+        self.assertContains(response, 'hello')
