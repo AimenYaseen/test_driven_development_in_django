@@ -2,6 +2,7 @@ import hashlib
 from django.test import TestCase
 
 from hashing.forms import HashForm
+from hashing.models import Hash
 
 
 class UnitTestCase(TestCase):
@@ -31,3 +32,16 @@ class UnitTestCase(TestCase):
         """
         hash_text = hashlib.sha256('hello'.encode('utf-8')).hexdigest()
         self.assertEqual('2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', hash_text)
+
+    def test_hash_object(self):
+        """
+        test that the hash model works or not
+        """
+        hash = Hash()
+        hash.text = 'hello'
+        hash.hash = '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
+        hash.save()
+
+        # match class hash and database hash
+        pulled_hash = Hash.objects.get(hash='2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824')
+        self.assertEqual(hash.hash, pulled_hash.hash)
