@@ -1,5 +1,6 @@
 import hashlib
 
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from hashing.forms import HashForm
@@ -63,3 +64,14 @@ class UnitTestCase(TestCase):
         # call hash view
         response = self.client.get('/hash/2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824')
         self.assertContains(response, 'hello')
+
+    def test_bad_data(self):
+        """
+        test if model validations work properly or not
+        """
+        def bad_hash():
+            _hash = Hash()
+            _hash.hash = '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824kiyg'
+            _hash.full_clean()
+
+        self.assertRaises(ValidationError, bad_hash)
