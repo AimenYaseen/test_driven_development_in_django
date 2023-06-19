@@ -11,19 +11,19 @@ def home(request):
     - handles post request to generate Hash object
     - renders home template with HashForm
     """
-    if request.method == 'POST':
-        filled_form = HashForm(request.POST)
-        if filled_form.is_valid():
-            text = filled_form.cleaned_data['text']
-            hash_text = hashlib.sha256(text.encode('utf-8')).hexdigest()
-            try:
-                Hash.objects.get(hash=hash_text)
-            except Hash.DoesNotExist:
-                Hash.objects.create(text=text, hash=hash_text)
-            return redirect('hash', hash_text=hash_text)
+    if not request.method == 'POST':
+        form = HashForm()
+        return render(request, 'hashing/home.html', context={'form': form})
 
-    form = HashForm()
-    return render(request, 'hashing/home.html', context={'form': form})
+    filled_form = HashForm(request.POST)
+    if filled_form.is_valid():
+        text = filled_form.cleaned_data['text']
+        hash_text = hashlib.sha256(text.encode('utf-8')).hexdigest()
+        try:
+            Hash.objects.get(hash=hash_text)
+        except Hash.DoesNotExist:
+            Hash.objects.create(text=text, hash=hash_text)
+        return redirect('hash', hash_text=hash_text)
 
 
 def hashing(request, hash_text):
