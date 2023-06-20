@@ -1,5 +1,6 @@
 import hashlib
 
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 from .forms import HashForm
@@ -33,3 +34,8 @@ def hashing(request, hash_text):
     """
     _hash = Hash.objects.get(hash=hash_text)
     return render(request, 'hashing/hash.html', context={'hash': _hash})
+
+
+def quickhash(request):
+    text = request.GET['text']
+    return JsonResponse({'hash': hashlib.sha256(text.encode('utf-8')).hexdigest()})
